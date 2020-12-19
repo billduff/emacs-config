@@ -24,8 +24,14 @@
 ;; Make highlight color always be the mac highlight color.
 (set-face-attribute 'region nil :background "#a9d1ff")
 
-;; Use 9.0pt font by default
-(set-face-attribute 'default nil :height 90)
+;; Set default font size to 10pt for laptop and 9pt for desktop.
+(set-face-attribute
+ 'default
+ nil
+ :height
+ (if (equal (getenv "DISPLAY") "Williams-MBP.lan")
+     100
+   90))
 
 (global-set-key [M-left] 'windmove-left)
 (global-set-key [M-right] 'windmove-right)
